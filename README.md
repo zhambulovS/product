@@ -1,1 +1,2 @@
-This is demo version project master's
+This is a demo version project master's project
+
