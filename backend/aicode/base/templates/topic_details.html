@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}{{ topic_title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-3">{{ topic_title }}</h2>
+  
+  <!-- Видео-урок -->
+  <div class="ratio ratio-16x9 mb-4">
+    <iframe src="{{ video_url }}" title="{{ topic_title }}" allowfullscreen></iframe>
+  </div>
+
+  <!-- Задания -->
+  <h5 class="mb-2">Тапсырмалар:</h5>
+  <ul>
+    {% for task in tasks %}
+      <li>{{ task }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
