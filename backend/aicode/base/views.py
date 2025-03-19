@@ -21,20 +21,20 @@ def topic_detail(request, topic_id):
     # Пример: упрощённая логика, без БД
     if topic_id == 4:
         context = {
-            'topic_title': '4 Тақырып: Адам-компьютер ӛзара әрекеттестігі',
-            'video_url': 'https://www.youtube.com/embed/EXAMPLE_VIDEO_4',
+            'topic_title': '4 Тақырып: Адам-компьютер өзара әрекеттестігі',
+            'video_url': 'https://www.youtube.com/embed/29gjnUB4Tds?si=CxPid1brPTihDVfX',
             'tasks': ['Task 4.1', 'Task 4.2', 'Task 4.3']
         }
     elif topic_id == 5:
         context = {
             'topic_title': '5 Тақырып: Деректер қорларының жүйелері',
-            'video_url': 'https://www.youtube.com/embed/EXAMPLE_VIDEO_5',
+            'video_url': 'https://www.youtube.com/embed/OiodPKcCQoA?si=JgLc8mTaa4gJUEXK',
             'tasks': ['Task 5.1', 'Task 5.2', 'Task 5.3']
         }
     elif topic_id == 6:
         context = {
             'topic_title': '6 Тақырып: Деректерді талдау. Деректерді басқару.',
-            'video_url': 'https://www.youtube.com/embed/EXAMPLE_VIDEO_6',
+            'video_url': 'https://www.youtube.com/embed/-vTjhRKRxsU?si=A3QTkoYB88WSgThe',
             'tasks': ['Task 6.1', 'Task 6.2']
         }
     else:
