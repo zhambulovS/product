@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'base',
+    'tailwind',
 ]
 
 MIDDLEWARE = [
@@ -124,5 +125,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'base:home'
-LOGIN_REDIRECT_URL = 'base:login'
-LOGIN_REDIRECT_URL = 'base:logout'
+LOGOUT_REDIRECT_URL = 'base:home'
+
+

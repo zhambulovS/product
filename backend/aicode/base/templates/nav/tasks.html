@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% block title %}Задачи{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #1f1f1f;
+        color: white;
+        font-family: Arial, sans-serif;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    .light-mode {
+        background-color: #faf3e0;
+        color: black;
+    }
+    .nav-bar {
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background: #2a2a2a;
+    }
+    .light-mode .nav-bar {
+        background: #f5e6ca;
+    }
+    .nav-bar h1 {
+        font-size: 20px; /* Уменьшение размера шрифта заголовка */
+        margin: 0; /* Удаление внешнего отступа */
+    }
+    .toggle-mode {
+        border: none;
+        cursor: pointer;
+        background: none;
+        font-size: 20px;
+        margin-left: 5px;
+    }
+    .task-list-container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 20px;
+    }
+    .task-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: #2a2a2a;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .light-mode .task-table {
+        background: #f5e6ca;
+    }
+    .task-table th, .task-table td {
+        padding: 15px;
+        text-align: left;
+    }
+    .task-table th {
+        background: #3a3a3a;
+    }
+    .light-mode .task-table th {
+        background: #e0d4b7;
+    }
+    .task-table tr:nth-child(even) {
+        background: #323232;
+    }
+    .light-mode .task-table tr:nth-child(even) {
+        background: #f0dfc5;
+    }
+    .difficulty-easy {
+        color: #5cb85c;
+    }
+    .difficulty-medium {
+        color: #f0ad4e;
+    }
+    .difficulty-hard {
+        color: #d9534f;
+    }
+    .task-link {
+        text-decoration: none;
+        color: #ffffff;
+    }
+    .light-mode .task-link {
+        color: #000000;
+    }
+    @media (max-width: 768px) {
+    .nav-bar {
+        padding: 10px;
+    }
+
+    .nav-bar h1 {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .toggle-mode {
+        font-size: 20px;
+        margin-left: 5px;
+    }
+}
+
+</style>
+</head>
+<body>
+<div class="nav-bar">
+    <h1>Список задач</h1>
+    <button class="toggle-mode" onclick="toggleMode()" id="theme-toggle-button">🌙</button>
+</div>
+
+<div class="task-list-container">
+    <table class="task-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Принятие</th>
+                <th>Сложность</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><a href="/task/1" class="task-link">Два числа</a></td>
+                <td>55.2%</td>
+                <td class="difficulty-easy">Легко</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><a href="/task/2" class="task-link">Сложение двух чисел </a></td>
+                <td>45.6%</td>
+                <td class="difficulty-medium">Средне</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><a href="/task/3" class="task-link">Поиск палиндрома</a></td>
+                <td>35.4%</td>
+                <td class="difficulty-hard">Сложно</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function toggleMode() {
+        const body = document.body;
+        const toggleButton = document.getElementById("theme-toggle-button");
+        body.classList.toggle("light-mode");
+        const isLightMode = body.classList.contains("light-mode");
+        localStorage.setItem("theme", isLightMode ? "light" : "dark");
+        toggleButton.textContent = isLightMode ? "🌞" : "🌙";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const toggleButton = document.getElementById("theme-toggle-button");
+        const isLightMode = localStorage.getItem("theme") === "light";
+        if (isLightMode) {
+            document.body.classList.add("light-mode");
+        }
+        toggleButton.textContent = isLightMode ? "🌞" : "🌙";
+    });
+</script>
+{% endblock %}

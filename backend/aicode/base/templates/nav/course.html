@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block title %}2 Модуль{% endblock %}
+
+{% block content %}
+<style>
+  .module-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  .module-item {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border-radius: 16px;
+    padding: 20px;
+    width: 300px;
+    height: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: center;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .module-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  .module-item h3 {
+    margin: 10px 0;
+    font-size: 22px;
+  }
+  .module-item p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
+    flex-grow: 1;
+  }
+  .progress-circle {
+  width: 40px;
+  height: 40px;
+  line-height: 40px; /* Центрирование текста */
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #6a11cb;
+  font-size: 14px;
+  margin: 10px auto 0 auto; /* Центрируем */
+}
+
+  .module-item img {
+    width: 100%;
+    border-radius: 12px;
+  }
+  @media (max-width: 600px) {
+  .module-item {
+    width: 90%; /* Уменьшаем ширину карточек */
+    height: auto; /* Позволяем высоте адаптироваться */
+    padding: 15px;
+  }
+  .module-item img {
+    max-height: 150px; /* Ограничиваем высоту изображений */
+  }
+}
+
+</style>
+
+<h1 class="text-center mb-4">АКТ <br>Адам-компьютер өзара әрекеттестігі және <br>деректерді талдау.</h1>
+
+<div class="module-container">
+  <div class="module-item" onclick="window.location='{% url 'base:topic_detail' topic_id=4 %}';">
+    <img src="/static/media/images/2.4.1.png" alt="Module Image">
+    <h3>Адам-компьютер өзара әрекеттестігі</h3>
+    <div class="progress-circle">1%</div>
+  </div>
+  
+  <div class="module-item" onclick="window.location='{% url 'base:topic_detail' topic_id=5 %}';">
+    <img src="/media/uploads/image.png" alt="Module Image">
+    <h3>Деректер қорларының жүйелері</h3>
+    <div class="progress-circle">3%</div>
+  </div>
+  
+  <div class="module-item" onclick="window.location='{% url 'base:topic_detail' topic_id=6 %}';">
+    <img src="/media/uploads/image.png" alt="Module Image">
+    <h3>Деректерді талдау. Деректерді басқару.</h3>
+    <div class="progress-circle">5%</div>
+  </div>
+</div>
+
+<h1 class="text-center mt-5">Python</h1>
+
+<div class="module-container">
+  <div class="module-item" onclick="window.location='{% url 'base:topic_detail' topic_id=7 %}';">
+    <img src="/media/uploads/image.png" alt="Module Image">
+    <h3>Python негіздері</h3>
+    <p>Синтаксис, мәліметтер типтері және негізгі операторлар.</p>
+    <div class="progress-circle">2%</div>
+  </div>
+  
+  <div class="module-item" onclick="window.location='{% url 'base:topic_detail' topic_id=8 %}';">
+    <img src="/media/uploads/image.png" alt="Module Image">
+    <h3>Функциялар және модульдер</h3>
+    <p>Функциялар, рекурсия және модульдерді қолдану.</p>
+    <div class="progress-circle">4%</div>
+  </div>
+</div>
+{% endblock %}

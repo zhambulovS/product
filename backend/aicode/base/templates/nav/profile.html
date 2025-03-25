@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-4">
+        <img src="{{ user.profile.image.url }}" alt="Фото профиля" class="rounded-circle" width="150" height="150">
+        <h2 class="mt-3">{{ user.username }}</h2>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-person"></i> Личная информация</h5>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Дата регистрации:</strong> {{ user.date_joined }}</p>
+            <p><strong>Ранг:</strong> 614 397</p>
+            <p><strong>Решенные задачи:</strong> 188 / 3491</p>
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-bar-chart"></i> Анализ успеваемости</h5>
+            <p><strong>Темы для изучения:</strong> Рекурсия, Динамическое программирование, Графы</p>
+            <p><strong>Темы для улучшения:</strong> Структуры данных, Алгоритмы сортировки</p>
+            <canvas id="performanceChart"></canvas>
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-calendar3"></i> Календарь активности</h5>
+            <div id="calendar" class="calendar-grid"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Рекурсия', 'ДП', 'Графы', 'Сортировки', 'Структуры данных'],
+            datasets: [{
+                label: 'Процент освоения',
+                data: [80, 60, 70, 40, 50],
+                backgroundColor: function(context) {
+                    const value = context.dataset.data[context.dataIndex];
+                    return value > 70 ? 'green' : value > 50 ? 'yellow' : 'red';
+                }
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const calendar = document.getElementById("calendar");
+        const daysInMonth = new Date().getDate();
+        for (let i = 1; i <= daysInMonth; i++) {
+            let day = document.createElement("div");
+            day.classList.add("day");
+            day.textContent = i;
+            day.style.backgroundColor = i % 3 === 0 ? "green" : "white";
+            day.style.display = "inline-block";
+            day.style.width = "30px";
+            day.style.height = "30px";
+            day.style.margin = "2px";
+            day.style.textAlign = "center";
+            day.style.borderRadius = "5px";
+            day.style.boxShadow = "0px 0px 5px rgba(0,0,0,0.2)";
+            day.style.cursor = "pointer";
+            day.title = i % 3 === 0 ? "Был активен" : "Не был активен";
+            calendar.appendChild(day);
+        }
+    });
+</script>
+{% endblock %}
